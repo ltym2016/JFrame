@@ -40,4 +40,22 @@ dependencies {
     api 'androidx.core:core-ktx:1.2.0'
     api 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-5'
+    def fresco_version = "2.1.0"
+    api "com.facebook.fresco:fresco:$fresco_version"
+    api "com.facebook.fresco:animated-gif:$fresco_version"
+    api "com.facebook.fresco:webpsupport:$fresco_version"
+    api "com.facebook.fresco:imagepipeline-okhttp3:$fresco_version"
+    api 'com.youth.banner:banner:1.4.10'
+    api 'com.shizhefei:ViewPagerIndicator:1.1.9'
+    api 'com.github.ltym2016:UIButton:1.0.0'
+    api 'com.github.ltym2016:JUtils:1.0.8'
+    api 'org.greenrobot:eventbus:3.1.1'
+    api 'com.orhanobut:logger:2.2.0'
+    api 'com.github.ltym2016:StatusBarUtils:1.0.9'
+    api 'com.squareup.retrofit2:retrofit:2.7.0'
+    api 'com.squareup.retrofit2:converter-gson:2.7.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

@@ -19,19 +19,19 @@ import java.lang.ref.WeakReference
  * @date 2020/3/6
  * @email samluys@foxmail.com
  */
-class BaseViewModel(application: Application) : AndroidViewModel(application), IBaseViewModel {
+open class BaseViewModel(application: Application) : AndroidViewModel(application), IBaseViewModel {
 
     private val mLiveData: ViewLiveData<Any> by lazy {
         ViewLiveData<Any>()
     }
-    lateinit var lifecycle:WeakReference<LifecycleProvider<Any>> //弱引用持有
-    lateinit var mCompositeDisposable : CompositeDisposable // 管理RxJava，主要针对RxJava异步操作造成的内存泄漏
+    private lateinit var lifecycle:WeakReference<LifecycleProvider<*>> //弱引用持有
+    private lateinit var mCompositeDisposable : CompositeDisposable // 管理RxJava，主要针对RxJava异步操作造成的内存泄漏
 
     /**
      * 注入RxLifecycle生命周期
      */
-    fun injectLifecycleProvider(lifecycle:LifecycleProvider<Any>) {
-        this.lifecycle = WeakReference<LifecycleProvider<Any>>(lifecycle)
+    fun injectLifecycleProvider(lifecycle:LifecycleProvider<*>) {
+        this.lifecycle = WeakReference<LifecycleProvider<*>>(lifecycle)
     }
 
     /**
@@ -63,7 +63,7 @@ class BaseViewModel(application: Application) : AndroidViewModel(application), I
      */
     var divider: ObservableBoolean = ObservableBoolean(true)
 
-    fun getLifecycleProvider():LifecycleProvider<Any>? = lifecycle.get()
+    fun getLifecycleProvider():LifecycleProvider<*>? = lifecycle.get()
 
     fun getLiveData() = mLiveData
 
@@ -96,7 +96,7 @@ class BaseViewModel(application: Application) : AndroidViewModel(application), I
         val showDialogEvent: SingleLiveEvent<String> = SingleLiveEvent<String>()
         val dismissDialogEvent: SingleLiveEvent<Any> = SingleLiveEvent<Any>()
         val startActivityEvent: SingleLiveEvent<Map<String, Any>> = SingleLiveEvent<Map<String, Any>>()
-        val startContainerActivityEvent: SingleLiveEvent<Map<String, Any>>? = SingleLiveEvent<Map<String, Any>>()
+        val startContainerActivityEvent: SingleLiveEvent<Map<String, Any>> = SingleLiveEvent<Map<String, Any>>()
         val startContainerNoSlideActivityEvent: SingleLiveEvent<Map<String, Any>> = SingleLiveEvent<Map<String, Any>>()
         var finishEvent: SingleLiveEvent<Any> = SingleLiveEvent<Any>()
         val onBackPressedEvent: SingleLiveEvent<Any> = SingleLiveEvent<Any>()
@@ -108,5 +108,11 @@ class BaseViewModel(application: Application) : AndroidViewModel(application), I
         override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
             super.observe(owner, observer)
         }
+    }
+
+    companion object{
+        const val CLASS = "CLASS"
+        const val CANONICAL_NAME = "CANONICAL_NAME"
+        const val BUNDLE = "BUNDLE"
     }
 }
