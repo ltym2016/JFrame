@@ -6,45 +6,9 @@ package com.luys.library.callback
  * @date 2020/3/9
  * @email samluys@foxmail.com
  */
-class BindingCommand<T> {
-    private var execute: BindingAction? = null
-    private var consumer: BindingConsumer<T>? = null
-    private var canExecute0: BindingFunction<Boolean>? = null
-
-    constructor(execute: BindingAction) {
-        this.execute = execute
-    }
-
-    /**
-     * @param execute 带泛型参数的命令绑定
-     */
-    constructor(execute: BindingConsumer<T>) {
-        consumer = execute
-    }
-
-    /**
-     * @param execute     触发命令
-     * @param canExecute0 true则执行,反之不执行
-     */
-    constructor(
-        execute: BindingAction,
-        canExecute0: BindingFunction<Boolean>
-    ) {
-        this.execute = execute
-        this.canExecute0 = canExecute0
-    }
-
-    /**
-     * @param execute     带泛型参数触发命令
-     * @param canExecute0 true则执行,反之不执行
-     */
-    constructor(
-        execute: BindingConsumer<T>,
-        canExecute0: BindingFunction<Boolean>
-    ) {
-        consumer = execute
-        this.canExecute0 = canExecute0
-    }
+class BindingCommand<T>(var execute: BindingAction? = null,
+                        var consumer: BindingConsumer<T>? = null,
+                        var canExecute0: BindingFunction<Boolean>? = null) {
 
     /**
      * 执行BindingAction命令
