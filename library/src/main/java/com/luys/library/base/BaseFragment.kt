@@ -133,7 +133,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
         // 跳入ContainerActivity
         // 跳入ContainerActivity
         viewModel.getLiveData().startContainerActivityEvent.observe(
-            viewLifecycleOwner,
+            this,
             Observer { params ->
                 val canonicalName =
                     params!![BaseViewModel.CANONICAL_NAME] as String?

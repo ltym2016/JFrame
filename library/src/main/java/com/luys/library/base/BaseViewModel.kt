@@ -1,6 +1,7 @@
 package com.luys.library.base
 
 import android.app.Application
+import android.os.Bundle
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
@@ -14,6 +15,7 @@ import com.trello.rxlifecycle3.LifecycleProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
+import java.util.*
 
 /**
  * @author luys
@@ -168,5 +170,121 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
      */
     open fun finish() {
         mLiveData.finishEvent.call()
+    }
+
+
+    /**
+     * 跳转页面
+     *
+     * @param clz 所跳转的目的Activity类
+     */
+    fun startActivity(clz: Class<*>) {
+        startActivity(clz, null)
+    }
+
+    /**
+     * 跳转到Service
+     *
+     * @param clz    所跳转的目的Service类
+     * @param bundle 跳转所携带的信息
+     */
+    fun startService(clz: Class<*>, bundle: Bundle?) {
+        val params: MutableMap<String, Any> =
+            HashMap()
+        params[CLASS] = clz
+        if (bundle != null) {
+            params[BUNDLE] = bundle
+        }
+        mLiveData.startServiceEvent.postValue(params)
+    }
+
+    /**
+     * 跳转到私聊页面
+     *
+     * @param params  需要传递的参数
+     */
+    fun startPrivateChat(params: Map<String, String>) {
+        mLiveData.startPrivateChatEvent.postValue(params)
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz    所跳转的目的Activity类
+     * @param bundle 跳转所携带的信息
+     */
+    fun startActivity(clz: Class<*>, bundle: Bundle?) {
+        val params: MutableMap<String, Any> =
+            HashMap()
+        params[CLASS] = clz
+        if (bundle != null) {
+            params[BUNDLE] = bundle
+        }
+        mLiveData.startActivityEvent.postValue(params)
+    }
+
+    /**
+     * 跳转容器页面
+     *
+     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
+     */
+    fun startContainerActivity(canonicalName: String) {
+        startContainerActivity(canonicalName, null)
+    }
+
+    /**
+     * 跳转容器页面
+     *
+     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
+     * @param bundle        跳转所携带的信息
+     */
+    fun startContainerActivity(canonicalName: String, bundle: Bundle?) {
+        val params: MutableMap<String, Any> =
+            HashMap()
+        params[CANONICAL_NAME] = canonicalName
+        if (bundle != null) {
+            params[BUNDLE] = bundle
+        }
+        mLiveData.startContainerActivityEvent.postValue(params)
+    }
+
+    /**
+     * 跳转没有侧滑容器页面
+     *
+     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
+     */
+    fun startContainerNoSlideActivity(canonicalName: String) {
+        startContainerNoSlideActivity(canonicalName, null)
+    }
+
+    /**
+     * 跳转没有侧滑容器页面
+     *
+     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
+     * @param bundle        跳转所携带的信息
+     */
+    fun startContainerNoSlideActivity(
+        canonicalName: String,
+        bundle: Bundle?
+    ) {
+        val params: MutableMap<String, Any> =
+            HashMap()
+        params[CANONICAL_NAME] = canonicalName
+        if (bundle != null) {
+            params[BUNDLE] = bundle
+        }
+        mLiveData.startContainerNoSlideActivityEvent.postValue(params)
+    }
+
+    fun showLoadingDialog() {
+        showLoadingDialog("请稍后...")
+    }
+
+    fun showLoadingDialog(title: String?) {
+        mLiveData.showDialogEvent.postValue(title)
+    }
+
+    fun dismissLoadingDialog() {
+        mLiveData.dismissDialogEvent.call()
     }
 }

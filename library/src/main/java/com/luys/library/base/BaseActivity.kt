@@ -122,7 +122,7 @@ open abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : RxAp
             this,
             Observer {
                 val canonicalName = it[BaseViewModel.CANONICAL_NAME] as String
-                val bundle = it[BaseViewModel.BUNDLE] as Bundle
+                val bundle = it[BaseViewModel.BUNDLE] as Bundle?
                 startContainerActivity(canonicalName, bundle)
             })
     }

@@ -3,6 +3,7 @@ package com.luys.jframe
 import android.app.Application
 import android.widget.Toast
 import com.luys.library.base.BaseViewModel
+import com.luys.library.base.SingleLiveEvent
 import com.luys.library.callback.BindingAction
 import com.luys.library.callback.BindingCommand
 
@@ -16,7 +17,10 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     val clickBindingCommand = BindingCommand<Any>(object : BindingAction {
         override fun call() {
-            Toast.makeText(application,"ddd", Toast.LENGTH_LONG).show()
+           val name : String? = NetworkFragment::class.java.canonicalName
+            name?.let {
+                startContainerActivity(name)
+            }
         }
     })
 }

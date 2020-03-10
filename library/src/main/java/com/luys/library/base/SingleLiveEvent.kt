@@ -31,11 +31,12 @@ open class SingleLiveEvent<T>:MutableLiveData<T>() {
     }
 
     override fun setValue(value: T?) {
+        mPending.set(true)
         super.setValue(value)
     }
 
     fun call() {
-        setValue(null)
+        value = null
     }
 
 }

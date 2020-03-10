@@ -1,5 +1,6 @@
 package com.luys.jframe
 
+import androidx.lifecycle.Observer
 import com.luys.jframe.databinding.ActivityMainBinding
 import com.luys.library.base.BaseActivity
 
