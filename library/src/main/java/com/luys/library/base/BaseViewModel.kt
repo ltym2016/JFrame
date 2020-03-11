@@ -29,7 +29,9 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
         ViewLiveData<Any>()
     }
     private lateinit var lifecycle: WeakReference<LifecycleProvider<*>> //弱引用持有
-    private lateinit var mCompositeDisposable: CompositeDisposable // 管理RxJava，主要针对RxJava异步操作造成的内存泄漏
+    private val mCompositeDisposable: CompositeDisposable  by lazy {
+        CompositeDisposable()
+    }// 管理RxJava，主要针对RxJava异步操作造成的内存泄漏
 
     /**
      * 注入RxLifecycle生命周期

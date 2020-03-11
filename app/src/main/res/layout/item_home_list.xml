@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.luys.jframe.HomeListEntity" />
+        <import type="android.text.TextUtils"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="itemClick"
+            type="com.luys.library.base.OnItemClickListener"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:onClick="@{(view)->itemClick.onItemClick(view, item)}"
+        android:background="@drawable/selector_item_click">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="@{item.title}"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimen_15sp"
+            android:paddingRight="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_incoming"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_incoming"/>
+
+        <TextView
+            android:id="@+id/tv_incoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="15dp"
+            android:text="@{item.salary}"
+            android:textSize="@dimen/dimen_14sp"
+            android:textColor="@color/color_theme"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/tv_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.samluys.uibutton.UIButton
+            android:id="@+id/go_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:paddingRight="14dp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="去应聘"
+            android:onClick="@{(view)->itemClick.onItemClick(view, item)}"
+            android:textColor="@color/color_theme"
+            android:textSize="@dimen/dimen_14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="19dp"
+            app:ui_activeEnable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:ui_cornerRadius="2dp"
+            app:ui_solidColor="@color/transparent"
+            app:ui_strokeColor="@color/color_theme"
+            app:ui_strokeWidth="0.5dp" />
+
+        <View style="@style/common_separate_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="15dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

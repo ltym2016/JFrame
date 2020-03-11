@@ -6,6 +6,14 @@
             name="item"
             type="com.luys.library.base.BaseBindingItem" />
 
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="itemClick"
+            type="com.luys.library.base.OnItemClickListener" />
+
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -21,7 +21,7 @@ class RetrofitHelper : RetrofitClientManager(){
          * @param <T>
          * @return
          */
-        private fun <T> getRetrofitApi(url:String, clazz:Class<T>) : T {
+        fun <T> getRetrofitApi(url:String, clazz:Class<T>) : T {
             return RetrofitHelper().getRetrofit(url,clazz)
         }
 
@@ -31,11 +31,11 @@ class RetrofitHelper : RetrofitClientManager(){
          * @param <T>
          * @return
          */
-        private fun <T> getRetrofitApi(clazz:Class<T>) : T {
+        fun <T> getRetrofitApi(clazz:Class<T>) : T {
             return RetrofitHelper().getRetrofit(HttpConfig.host,clazz)
         }
 
-        fun <T> subscript(observable: Observable<T>, action: Consumer<in Any>) : Disposable {
+        fun <T> subscript(observable: Observable<T>, action: Consumer<T>) : Disposable {
             return subscript(observable, Consumer {
 
             }, action, ExceptionHandle(), Action {
@@ -43,7 +43,7 @@ class RetrofitHelper : RetrofitClientManager(){
             })
         }
 
-        fun <T> subscript(observable: Observable<T>, action: Consumer<in Any>, e:Consumer<Throwable>) : Disposable {
+        fun <T> subscript(observable: Observable<T>, action: Consumer<T>, e:Consumer<Throwable>) : Disposable {
             return subscript(observable, Consumer {
 
             }, action, e, Action {
@@ -51,7 +51,7 @@ class RetrofitHelper : RetrofitClientManager(){
             })
         }
 
-        fun <T> subscript(observable: Observable<T>, start: Consumer<Disposable>, action: Consumer<in Any>, complete: Action) : Disposable {
+        fun <T> subscript(observable: Observable<T>, start: Consumer<Disposable>, action: Consumer<T>, complete: Action) : Disposable {
             return subscript(observable,start,action,ExceptionHandle(),complete)
         }
 
@@ -59,12 +59,12 @@ class RetrofitHelper : RetrofitClientManager(){
         private fun <T> subscript(
             observable: Observable<T>,
             start: Consumer<Disposable>,
-            action: Consumer<in Any>,
+            action: Consumer<T>,
             e: Consumer<Throwable>,
             complete: Action
         ): Disposable {
             return observable
-                .compose<Any>(RxUtils.iOThreadScheduler())
+                .compose(RxUtils.iOThreadScheduler())
                 .doOnSubscribe(start)
                 .subscribe(action, e, complete)
         }
