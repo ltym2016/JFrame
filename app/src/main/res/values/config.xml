@@ -2,7 +2,7 @@
 <resources>
 
     <!--接口地址-->
-    <string name="host">http://jxxxx/api/</string>
+    <string name="host">http://xxx/api/</string>
 <!--    <string name="host">http://job.chuji.mobi/api/</string>-->
     <!--上传地址-->
     <string name="upload_host">http://xxx/api/</string>
