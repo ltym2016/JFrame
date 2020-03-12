@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.jakewharton.rxbinding3.view.clicks
 import com.luys.library.callback.BindingCommand
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import io.reactivex.functions.Consumer
 import java.util.concurrent.TimeUnit
 
@@ -93,6 +94,28 @@ object ViewBindingAdapter {
     fun setImageRes(imageView: ImageView, resId: Int) {
         if (resId > 0) {
             imageView.setImageResource(resId)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("onRefreshCommand")
+    fun onRefreshCommand(
+        smartRefreshLayout: SmartRefreshLayout,
+        onRefreshCommand: BindingCommand<Any>?
+    ) {
+        smartRefreshLayout.setOnRefreshListener {
+            onRefreshCommand?.execute()
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("onLoadMoreCommand")
+    fun onLoadMoreCommand(
+        smartRefreshLayout: SmartRefreshLayout,
+        onLoadMoreCommand: BindingCommand<Any>?
+    ) {
+        smartRefreshLayout.setOnLoadMoreListener {
+            onLoadMoreCommand?.execute()
         }
     }
 }
