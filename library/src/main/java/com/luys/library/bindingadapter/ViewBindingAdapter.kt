@@ -51,6 +51,7 @@ object ViewBindingAdapter {
      */
     @SuppressLint("ClickableViewAccessibility")
     @BindingAdapter("onClickScaleCommand")
+    @JvmStatic
     fun onClickScaleCommand(
         view: ImageView,
         clickCommand: BindingCommand<Any>?
@@ -74,6 +75,7 @@ object ViewBindingAdapter {
      * @param colorId
      */
     @BindingAdapter("txtColor")
+    @JvmStatic
     fun setTxtColor(textView: TextView, colorId: Int) {
         if (colorId > 0) {
             textView.setTextColor(textView.context.resources.getColor(colorId))
@@ -87,6 +89,7 @@ object ViewBindingAdapter {
      * @param resId
      */
     @BindingAdapter("android:src")
+    @JvmStatic
     fun setImageRes(imageView: ImageView, resId: Int) {
         if (resId > 0) {
             imageView.setImageResource(resId)

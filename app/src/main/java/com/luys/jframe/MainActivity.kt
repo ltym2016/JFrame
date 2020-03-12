@@ -1,11 +1,7 @@
 package com.luys.jframe
 
-import androidx.lifecycle.Observer
 import com.luys.jframe.databinding.ActivityMainBinding
 import com.luys.library.base.BaseActivity
-import com.samluys.jutils.log.LogUtils
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
