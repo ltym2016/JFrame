@@ -1,7 +1,12 @@
 package com.luys.jframe
 
+import android.content.pm.ActivityInfo
+import android.graphics.drawable.GradientDrawable
+import android.util.Log
+import androidx.lifecycle.Observer
 import com.luys.jframe.databinding.ActivityMainBinding
 import com.luys.library.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
@@ -17,6 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun initViewObservable() {
+
     }
 
     override fun setOrientation() {

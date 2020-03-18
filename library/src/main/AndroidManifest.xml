@@ -15,6 +15,7 @@
         <activity android:name=".activity.ContainerActivity"
             android:theme="@style/Theme.Container"
             android:launchMode="standard"
+            android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustResize|stateHidden"
             />
 

@@ -23,4 +23,5 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
             }
         }
     })
+
 }

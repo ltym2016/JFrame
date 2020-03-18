@@ -2,6 +2,7 @@ package com.luys.jframe
 
 import android.app.Activity
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +30,8 @@ class NetworkFragment : BaseFragment<FragmentNetworkBinding, NetworkViewModel>()
 //                    startContainerActivity(DetailFragment::class.java.canonicalName, bundle)
 //                }
 //            }
+
+//                activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             }
         })
     }
