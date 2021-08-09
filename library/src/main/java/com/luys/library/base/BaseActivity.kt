@@ -23,7 +23,7 @@ import java.lang.reflect.ParameterizedType
  * @date 2020/3/6
  * @email samluys@foxmail.com
  */
-open abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : RxAppCompatActivity(),IBaseView {
+abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : RxAppCompatActivity(),IBaseView {
 
     protected lateinit var binding:V
     protected lateinit var viewModel: VM

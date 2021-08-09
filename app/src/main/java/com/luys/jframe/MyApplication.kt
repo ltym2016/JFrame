@@ -1,6 +1,7 @@
 package com.luys.jframe
 
 import android.app.Application
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.luys.library.http.HttpUtils
 import com.samluys.jutils.Utils
 import com.samluys.jutils.log.LogUtils
